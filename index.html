@@ -1,184 +1,610 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Placeholder site for a GitHub Pages project." />
-    <title>Project Placeholder</title>
-    <style>
-      :root {
-        --bg: #0b0f14;
-        --card: #121824;
-        --text: #e8eef7;
-        --muted: #a9b4c2;
-        --border: rgba(232, 238, 247, 0.14);
-        --accent: #7cc4ff;
-        --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-        --radius: 16px;
-      }
-
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: #f6f8fb;
-          --card: #ffffff;
-          --text: #0b0f14;
-          --muted: #4b5563;
-          --border: rgba(11, 15, 20, 0.12);
-          --accent: #2563eb;
-          --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-      }
-
-      * { box-sizing: border-box; }
-      html, body { height: 100%; }
-
-      body {
-        margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
-          "Segoe UI Emoji";
-        background: radial-gradient(1200px 600px at 20% 10%, rgba(124, 196, 255, 0.18), transparent 60%),
-          radial-gradient(900px 500px at 80% 0%, rgba(37, 99, 235, 0.14), transparent 55%),
-          var(--bg);
-        color: var(--text);
-        line-height: 1.5;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-      }
-
-      main {
-        width: min(860px, 100%);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: clamp(20px, 4vw, 40px);
-        backdrop-filter: blur(6px);
-      }
-
-      header {
-        display: flex;
-        gap: 14px;
-        align-items: center;
-        margin-bottom: 18px;
-      }
-
-      .badge {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        background: rgba(124, 196, 255, 0.18);
-        border: 1px solid var(--border);
-        display: grid;
-        place-items: center;
-        color: var(--accent);
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        user-select: none;
-      }
-
-      h1 {
-        font-size: clamp(22px, 3vw, 30px);
-        margin: 0;
-      }
-
-      p {
-        margin: 10px 0;
-        color: var(--muted);
-        max-width: 70ch;
-      }
-
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 18px;
-      }
-
-      a.button {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        text-decoration: none;
-        padding: 10px 14px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        color: var(--text);
-        background: rgba(255, 255, 255, 0.03);
-        transition: transform 120ms ease, background 120ms ease;
-      }
-
-      a.button:hover {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.06);
-      }
-
-      a.button.primary {
-        border-color: rgba(124, 196, 255, 0.4);
-        background: rgba(124, 196, 255, 0.12);
-      }
-
-      footer {
-        margin-top: 22px;
-        padding-top: 16px;
-        border-top: 1px solid var(--border);
-        color: var(--muted);
-        font-size: 14px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: space-between;
-      }
-
-      code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 0.95em;
-        padding: 2px 6px;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        background: rgba(0, 0, 0, 0.12);
-      }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapLink Router Test Links</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none';"
+    >
+    <meta
+      name="description"
+      content="Verify MapLink Router setup and test supported map links in Safari."
+    >
+    <link rel="stylesheet" href="../tokens.css">
+    <link rel="stylesheet" href="test.css">
+    <script src="test.js" defer></script>
   </head>
-
   <body>
-    <main>
-      <header>
-        <div class="badge" aria-hidden="true">GP</div>
-        <div>
-          <h1>GitHub Pages Placeholder</h1>
-          <p>This site is live — content coming soon.</p>
+    <header class="mlr-test-header">
+      <div class="mlr-container mlr-nav">
+        <div class="mlr-wordmark">
+          <span class="mlr-wordmark-text">MapLink Router</span>
+          <span class="mlr-pill mlr-pill--sand">Test Links</span>
         </div>
-      </header>
-
-      <section>
-        <p>
-          Replace this page by editing <code>index.html</code> in your repository.
-          If you’re using a custom domain, configure it in your repo settings under <code>Pages</code>.
-        </p>
-
-        <div class="actions">
-          <!-- Update these links as you like -->
-          <a class="button primary" href="https://github.com/" target="_blank" rel="noreferrer noopener">
-            View repository →
+        <nav class="mlr-nav-links" aria-label="Primary">
+          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/">
+            Back to landing
           </a>
-          <a class="button" href="#" onclick="alert('TODO: Add docs link')">Docs</a>
-          <a class="button" href="mailto:you@example.com">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="mlr-section mlr-hero">
+        <div class="mlr-container">
+          <div class="mlr-hero-card mlr-stack">
+            <div>
+              <p class="mlr-section-title">Diagnostics</p>
+              <h1 class="mlr-title">Verify MapLink Router on this site</h1>
+              <p class="mlr-muted">
+                This page checks whether the Safari extension is active and offers
+                deterministic test links.
+              </p>
+            </div>
+            <div class="mlr-status-card" data-mlr-status="unknown">
+              <div>
+                <div class="mlr-status-label">Extension status</div>
+                <div class="mlr-status-value" data-mlr-status-text>
+                  Checking for MapLink Router...
+                </div>
+                <p class="mlr-muted" data-mlr-status-detail>
+                  Waiting for a response from the Safari extension.
+                </p>
+                <div class="mlr-muted" data-mlr-settings-steps hidden></div>
+              </div>
+              <div class="mlr-status-meta">
+                <div>
+                  <div class="mlr-status-kicker">Preferred app</div>
+                  <div class="mlr-status-value" data-mlr-preferred-app>Unknown</div>
+                </div>
+                <div>
+                  <div class="mlr-status-kicker">Redirects</div>
+                  <div class="mlr-status-value" data-mlr-redirects-enabled>
+                    Unknown
+                  </div>
+                </div>
+                <div>
+                  <div class="mlr-status-kicker">App schemes</div>
+                  <div class="mlr-status-value" data-mlr-prefer-schemes>
+                    Unknown
+                  </div>
+                </div>
+              </div>
+              <div class="mlr-status-actions">
+                <button
+                  class="mlr-button mlr-button--secondary"
+                  type="button"
+                  data-mlr-action="retry-handshake"
+                >
+                  Retry handshake
+                </button>
+                <button
+                  class="mlr-button mlr-button--ghost"
+                  type="button"
+                  data-mlr-action="settings-steps"
+                >
+                  How to open extension settings
+                </button>
+              </div>
+            </div>
+            <div class="mlr-origin-card">
+              <div class="mlr-origin-title">Current test origin</div>
+              <div class="mlr-origin-value" data-mlr-origin>
+                https://maplinkroutertest.sigmology.ch
+              </div>
+              <p class="mlr-muted">
+                If you use Selected Websites, add the exact origin shown above in
+                Safari → Extensions → MapLink Router → Website Access.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <footer>
-        <span>© <span id="year"></span> Your Project</span>
-        <span>Last updated: <span id="updated"></span></span>
-      </footer>
+      <section class="mlr-section" aria-labelledby="guidance-title" data-mlr-guidance="inactive">
+        <div class="mlr-container">
+          <div class="mlr-guidance-grid">
+            <div class="mlr-card mlr-stack" data-mlr-inactive-card>
+              <h2 class="mlr-subtitle" id="guidance-title">If the extension is not active</h2>
+              <ol class="mlr-list">
+                <li>Enable MapLink Router in Settings → Safari → Extensions.</li>
+                <li>Set Website Access to All Websites (recommended).</li>
+                <li>
+                  If using Selected Websites, allow
+                  <span class="mlr-inline-pill" data-mlr-origin>
+                    https://maplinkroutertest.sigmology.ch
+                  </span>
+                  explicitly.
+                </li>
+                <li>
+                  Test in a normal (non-Private) Safari tab first. Private Browsing
+                  may disable extensions unless enabled.
+                </li>
+              </ol>
+            </div>
+            <div class="mlr-card mlr-stack" data-mlr-private-card>
+              <h2 class="mlr-subtitle">Private Browsing note</h2>
+              <p class="mlr-muted">
+                Safari may disable extensions in Private Browsing. If you want
+                MapLink Router there, enable Allow in Private Browsing in Settings.
+              </p>
+              <div class="mlr-pill mlr-pill--sky" data-mlr-private-pill>
+                Test normal mode first
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mlr-section" aria-labelledby="fixtures-title">
+        <div class="mlr-container">
+          <div class="mlr-stack">
+            <div>
+              <p class="mlr-section-title">Test fixtures</p>
+              <h2 class="mlr-subtitle" id="fixtures-title">Open or diagnose each link</h2>
+              <p class="mlr-muted">
+                Expected behavior updates once the extension responds. If MapLink
+                Router is inactive, these links open normally in Safari.
+              </p>
+            </div>
+            <div class="mlr-card mlr-stack" data-mlr-decision-log hidden>
+              <div class="mlr-section-title">Last actions</div>
+              <div class="mlr-muted" data-mlr-decision-log-empty>
+                No recent decisions recorded yet.
+              </div>
+              <div class="mlr-stack" data-mlr-decision-log-list></div>
+            </div>
+            <div class="mlr-grid mlr-fixtures-grid">
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="apple-search-q">
+                <div class="mlr-fixture-header">
+                  <h3>Apple Maps search (q)</h3>
+                  <span class="mlr-pill mlr-pill--sand">Place search</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route to your preferred app.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://maps.apple.com/?q=Coffee%20Shop%20San%20Francisco"
+                    data-mlr-fixture-id="apple-search-q"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="apple-search-q"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="apple-search-q"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="apple-coords-ll">
+                <div class="mlr-fixture-header">
+                  <h3>Apple Maps coordinates (ll)</h3>
+                  <span class="mlr-pill mlr-pill--sky">Coordinate-only</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route by coordinates.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://maps.apple.com/?ll=37.7758,-122.4182"
+                    data-mlr-fixture-id="apple-coords-ll"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="apple-coords-ll"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="apple-coords-ll"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="apple-coords-sll">
+                <div class="mlr-fixture-header">
+                  <h3>Apple Maps coordinates (sll)</h3>
+                  <span class="mlr-pill mlr-pill--sky">Coordinate-only</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route by coordinates.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://maps.apple.com/?sll=37.3318,-122.0312"
+                    data-mlr-fixture-id="apple-coords-sll"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="apple-coords-sll"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="apple-coords-sll"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="google-search-api">
+                <div class="mlr-fixture-header">
+                  <h3>Google Maps search (api=1)</h3>
+                  <span class="mlr-pill mlr-pill--sand">Place search</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route to your preferred app.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://www.google.com/maps/search/?api=1&query=Pizza%20near%20Union%20Square"
+                    data-mlr-fixture-id="google-search-api"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="google-search-api"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="google-search-api"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="google-coords-query">
+                <div class="mlr-fixture-header">
+                  <h3>Google Maps coordinates (query)</h3>
+                  <span class="mlr-pill mlr-pill--sky">Coordinate-only</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route by coordinates.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://www.google.com/maps/search/?api=1&query=37.7765,-122.4167"
+                    data-mlr-fixture-id="google-coords-query"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="google-coords-query"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="google-coords-query"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="apple-directions">
+                <div class="mlr-fixture-header">
+                  <h3>Apple Maps directions</h3>
+                  <span class="mlr-pill mlr-pill--orange">Directions</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route with directions.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://maps.apple.com/?daddr=1%20Infinite%20Loop%2C%20Cupertino&dirflg=d"
+                    data-mlr-fixture-id="apple-directions"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="apple-directions"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="apple-directions"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="google-directions-api">
+                <div class="mlr-fixture-header">
+                  <h3>Google Maps directions (api=1)</h3>
+                  <span class="mlr-pill mlr-pill--orange">Directions</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route with directions.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://www.google.com/maps/dir/?api=1&destination=Golden%20Gate%20Bridge&origin=Ferry%20Building&travelmode=driving"
+                    data-mlr-fixture-id="google-directions-api"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="google-directions-api"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="google-directions-api"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="google-cid">
+                <div class="mlr-fixture-header">
+                  <h3>Google Maps place (cid)</h3>
+                  <span class="mlr-pill mlr-pill--sand">CID canonicalization</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: may briefly open Google Maps
+                  to resolve this place.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://www.google.com/maps?cid=10281119596374313554"
+                    data-mlr-fixture-id="google-cid"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="google-cid"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="google-cid"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="google-shortlink">
+                <div class="mlr-fixture-header">
+                  <h3>Google short link</h3>
+                  <span class="mlr-pill mlr-pill--sand">Short link (no redirect)</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: no redirect (short links
+                  are intentionally not expanded).
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://maps.app.goo.gl/2Z1wQb6CokX3gnvA8"
+                    data-mlr-fixture-id="google-shortlink"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="google-shortlink"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="google-shortlink"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="waze-stable">
+                <div class="mlr-fixture-header">
+                  <h3>Waze stable link</h3>
+                  <span class="mlr-pill mlr-pill--sand">Same-provider</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: may be left unchanged if
+                  Waze is the preferred app.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://waze.com/ul?ll=37.7765,-122.4167&navigate=yes"
+                    data-mlr-fixture-id="waze-stable"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="waze-stable"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="waze-stable"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="apple-search-address">
+                <div class="mlr-fixture-header">
+                  <h3>Apple Maps search (address)</h3>
+                  <span class="mlr-pill mlr-pill--sand">Place search</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route to your preferred app.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://maps.apple.com/?address=1600%20Amphitheatre%20Parkway%2C%20Mountain%20View"
+                    data-mlr-fixture-id="apple-search-address"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="apple-search-address"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="apple-search-address"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="google-wrapper-url">
+                <div class="mlr-fixture-header">
+                  <h3>Google wrapper (/url)</h3>
+                  <span class="mlr-pill mlr-pill--orange">Wrapper unroll</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: unwrap to a stable Google
+                  Maps URL first.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DCentral%2520Park"
+                    data-mlr-fixture-id="google-wrapper-url"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="google-wrapper-url"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="google-wrapper-url"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+
+              <article class="mlr-card mlr-fixture" data-mlr-fixture="google-legacy-q">
+                <div class="mlr-fixture-header">
+                  <h3>Google legacy search (q)</h3>
+                  <span class="mlr-pill mlr-pill--sand">Legacy search</span>
+                </div>
+                <p class="mlr-muted" data-mlr-expected>
+                  Expected when MapLink Router is active: route to your preferred app.
+                </p>
+                <div class="mlr-fixture-actions">
+                  <a
+                    class="mlr-button mlr-button--primary"
+                    href="https://www.google.com/maps?q=San%20Jose%20City%20Hall"
+                    data-mlr-fixture-id="google-legacy-q"
+                  >
+                    Open
+                  </a>
+                  <button
+                    class="mlr-button mlr-button--secondary"
+                    type="button"
+                    data-mlr-fixture-id="google-legacy-q"
+                  >
+                    Diagnose
+                  </button>
+                  <button
+                    class="mlr-button mlr-button--ghost"
+                    type="button"
+                    data-mlr-fixture-id="google-legacy-q"
+                  >
+                    Copy link
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <script>
-      // Tiny enhancement: keep the placeholder from looking stale
-      const now = new Date();
-      document.getElementById("year").textContent = String(now.getFullYear());
-      document.getElementById("updated").textContent = now.toISOString().slice(0, 10);
-    </script>
+    <footer class="mlr-section mlr-footer">
+      <div class="mlr-container mlr-stack">
+        <p class="mlr-muted">
+          Opening installed apps from Safari is best-effort. If Safari remembers a
+          prior choice such as “open in browser,” that choice may take precedence.
+        </p>
+        <p class="mlr-muted">
+          Diagnostics are performed locally; no test URLs are sent to a server.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
-

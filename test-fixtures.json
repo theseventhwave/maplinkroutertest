@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0",
+  "fixtures": [
+    {
+      "id": "apple-search-q",
+      "title": "Apple Maps search (q)",
+      "intentType": "place",
+      "url": "https://maps.apple.com/?q=Coffee%20Shop%20San%20Francisco"
+    },
+    {
+      "id": "apple-coords-ll",
+      "title": "Apple Maps coordinates (ll)",
+      "intentType": "coordinate-only",
+      "url": "https://maps.apple.com/?ll=37.7758,-122.4182"
+    },
+    {
+      "id": "apple-coords-sll",
+      "title": "Apple Maps coordinates (sll)",
+      "intentType": "coordinate-only",
+      "url": "https://maps.apple.com/?sll=37.3318,-122.0312"
+    },
+    {
+      "id": "google-search-api",
+      "title": "Google Maps search (api=1)",
+      "intentType": "place",
+      "url": "https://www.google.com/maps/search/?api=1&query=Pizza%20near%20Union%20Square"
+    },
+    {
+      "id": "google-coords-query",
+      "title": "Google Maps coordinates (query)",
+      "intentType": "coordinate-only",
+      "url": "https://www.google.com/maps/search/?api=1&query=37.7765,-122.4167"
+    },
+    {
+      "id": "apple-directions",
+      "title": "Apple Maps directions",
+      "intentType": "directions",
+      "url": "https://maps.apple.com/?daddr=1%20Infinite%20Loop%2C%20Cupertino&dirflg=d"
+    },
+    {
+      "id": "google-directions-api",
+      "title": "Google Maps directions (api=1)",
+      "intentType": "directions",
+      "url": "https://www.google.com/maps/dir/?api=1&destination=Golden%20Gate%20Bridge&origin=Ferry%20Building&travelmode=driving"
+    },
+    {
+      "id": "google-cid",
+      "title": "Google Maps place (cid)",
+      "intentType": "cid-canonicalization",
+      "url": "https://www.google.com/maps?cid=10281119596374313554"
+    },
+    {
+      "id": "google-shortlink",
+      "title": "Google short link",
+      "intentType": "shortlink-noop",
+      "url": "https://maps.app.goo.gl/2Z1wQb6CokX3gnvA8"
+    },
+    {
+      "id": "waze-stable",
+      "title": "Waze stable link",
+      "intentType": "same-provider",
+      "url": "https://waze.com/ul?ll=37.7765,-122.4167&navigate=yes"
+    },
+    {
+      "id": "apple-search-address",
+      "title": "Apple Maps search (address)",
+      "intentType": "place",
+      "url": "https://maps.apple.com/?address=1600%20Amphitheatre%20Parkway%2C%20Mountain%20View"
+    },
+    {
+      "id": "google-wrapper-url",
+      "title": "Google wrapper (/url)",
+      "intentType": "wrapper-unroll",
+      "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DCentral%2520Park"
+    },
+    {
+      "id": "google-legacy-q",
+      "title": "Google legacy search (q)",
+      "intentType": "legacy-search",
+      "url": "https://www.google.com/maps?q=San%20Jose%20City%20Hall"
+    }
+  ]
+}
