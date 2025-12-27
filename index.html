@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Placeholder site for a GitHub Pages project." />
+    <title>Project Placeholder</title>
+    <style>
+      :root {
+        --bg: #0b0f14;
+        --card: #121824;
+        --text: #e8eef7;
+        --muted: #a9b4c2;
+        --border: rgba(232, 238, 247, 0.14);
+        --accent: #7cc4ff;
+        --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        --radius: 16px;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f6f8fb;
+          --card: #ffffff;
+          --text: #0b0f14;
+          --muted: #4b5563;
+          --border: rgba(11, 15, 20, 0.12);
+          --accent: #2563eb;
+          --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background: radial-gradient(1200px 600px at 20% 10%, rgba(124, 196, 255, 0.18), transparent 60%),
+          radial-gradient(900px 500px at 80% 0%, rgba(37, 99, 235, 0.14), transparent 55%),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      main {
+        width: min(860px, 100%);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: clamp(20px, 4vw, 40px);
+        backdrop-filter: blur(6px);
+      }
+
+      header {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .badge {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: rgba(124, 196, 255, 0.18);
+        border: 1px solid var(--border);
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        user-select: none;
+      }
+
+      h1 {
+        font-size: clamp(22px, 3vw, 30px);
+        margin: 0;
+      }
+
+      p {
+        margin: 10px 0;
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      a.button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.03);
+        transition: transform 120ms ease, background 120ms ease;
+      }
+
+      a.button:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      a.button.primary {
+        border-color: rgba(124, 196, 255, 0.4);
+        background: rgba(124, 196, 255, 0.12);
+      }
+
+      footer {
+        margin-top: 22px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.95em;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.12);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <div class="badge" aria-hidden="true">GP</div>
+        <div>
+          <h1>GitHub Pages Placeholder</h1>
+          <p>This site is live — content coming soon.</p>
+        </div>
+      </header>
+
+      <section>
+        <p>
+          Replace this page by editing <code>index.html</code> in your repository.
+          If you’re using a custom domain, configure it in your repo settings under <code>Pages</code>.
+        </p>
+
+        <div class="actions">
+          <!-- Update these links as you like -->
+          <a class="button primary" href="https://github.com/" target="_blank" rel="noreferrer noopener">
+            View repository →
+          </a>
+          <a class="button" href="#" onclick="alert('TODO: Add docs link')">Docs</a>
+          <a class="button" href="mailto:you@example.com">Contact</a>
+        </div>
+      </section>
+
+      <footer>
+        <span>© <span id="year"></span> Your Project</span>
+        <span>Last updated: <span id="updated"></span></span>
+      </footer>
+    </main>
+
+    <script>
+      // Tiny enhancement: keep the placeholder from looking stale
+      const now = new Date();
+      document.getElementById("year").textContent = String(now.getFullYear());
+      document.getElementById("updated").textContent = now.toISOString().slice(0, 10);
+    </script>
+  </body>
+</html>
+
