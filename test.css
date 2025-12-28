@@ -1,6 +1,6 @@
 .mlr-test-header {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 10;
   backdrop-filter: blur(10px);
   background: rgba(252, 246, 217, 0.92);
@@ -10,13 +10,32 @@
 .mlr-wordmark {
   display: flex;
   align-items: center;
-  gap: var(--mlr-space-3);
+  flex-wrap: wrap;
+  gap: 10px;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
+.mlr-wordmark-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mlr-wordmark-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .mlr-wordmark-text {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .mlr-status-card {
@@ -133,13 +152,40 @@
 }
 
 @media (max-width: 720px) {
+  .mlr-test-header {
+    position: static;
+  }
+
   .mlr-status-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
+  .mlr-status-actions .mlr-button,
+  .mlr-fixture-actions .mlr-button {
+    width: 100%;
+  }
+
   .mlr-fixture-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .mlr-fixture-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .mlr-status-actions .mlr-button,
+  .mlr-fixture-actions .mlr-button {
+    flex: 1 1 calc(50% - 12px);
+  }
+}
+
+@media (max-height: 520px) {
+  .mlr-test-header {
+    position: static;
   }
 }
