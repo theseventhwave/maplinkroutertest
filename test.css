@@ -97,6 +97,8 @@
   font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.95rem;
   color: var(--mlr-orange);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .mlr-guidance-grid {
