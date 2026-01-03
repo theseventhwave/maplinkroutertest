@@ -6,7 +6,7 @@
   const MAX_DECISIONS = 10;
   const SETTINGS_STEP_TEXT =
     "Safari → Extensions → MapLink Router → Settings/Options. " +
-    "If you do not see it there, open Settings → Safari → Extensions → " +
+    "If you do not see it there, open Settings → Apps → Safari → Extensions → " +
     "MapLink Router.";
 
   const state = {
