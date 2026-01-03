@@ -17,6 +17,7 @@
     <link rel="apple-touch-icon" href="assets/app-icon.png">
     <link rel="stylesheet" href="../tokens.css">
     <link rel="stylesheet" href="test.css">
+    <script src="nav.js" defer></script>
     <script src="test.js" defer></script>
   </head>
   <body>
@@ -33,9 +34,24 @@
           <span class="mlr-wordmark-text">MapLink Router</span>
           <span class="mlr-pill mlr-pill--sand">Test Links</span>
         </div>
-        <nav class="mlr-nav-links" aria-label="Primary">
-          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/">
-            Back to landing
+        <button
+          class="mlr-nav-toggle"
+          type="button"
+          data-mlr-nav-toggle
+          aria-expanded="false"
+          aria-controls="mlr-primary-nav"
+          aria-label="Toggle navigation"
+        >
+          <span class="mlr-nav-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <nav class="mlr-nav-links" aria-label="Primary" id="mlr-primary-nav" data-mlr-nav-links>
+          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/#how-it-works">How it works</a>
+          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/#supported">Supported links</a>
+          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/#faq">FAQ</a>
+          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/privacy/">Privacy</a>
+          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/support/">Support</a>
+          <a class="mlr-nav-link" href="https://maplinkroutertest.sigmology.ch/">
+            Test page
           </a>
         </nav>
       </div>
@@ -614,6 +630,13 @@
         <p class="mlr-muted">
           Diagnostics are performed locally; no test URLs are sent to a server.
         </p>
+        <div class="mlr-footer-links" aria-label="Footer">
+          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/privacy/">Privacy</a>
+          <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/support/">Support</a>
+          <a class="mlr-nav-link" href="https://maplinkroutertest.sigmology.ch/">
+            Test page
+          </a>
+        </div>
       </div>
     </footer>
   </body>
