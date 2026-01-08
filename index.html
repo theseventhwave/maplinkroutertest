@@ -191,13 +191,14 @@
                   <h3>Apple Maps search (q)</h3>
                   <span class="mlr-pill mlr-pill--sand">Place search</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route to your preferred app.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://maps.apple.com/?q=Coffee%20Shop%20San%20Francisco"
+                    href="https://maps.apple.com/?q=Eiffel%20Tower%2C%20Paris"
                     data-mlr-fixture-id="apple-search-q"
                   >
                     Open
@@ -224,13 +225,14 @@
                   <h3>Apple Maps coordinates (ll)</h3>
                   <span class="mlr-pill mlr-pill--sky">Coordinate-only</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route by coordinates.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://maps.apple.com/?ll=37.7758,-122.4182"
+                    href="https://maps.apple.com/?ll=40.689247,-74.044502"
                     data-mlr-fixture-id="apple-coords-ll"
                   >
                     Open
@@ -257,13 +259,14 @@
                   <h3>Apple Maps coordinates (sll)</h3>
                   <span class="mlr-pill mlr-pill--sky">Coordinate-only</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route by coordinates.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://maps.apple.com/?sll=37.3318,-122.0312"
+                    href="https://maps.apple.com/?sll=37.819929,-122.478255"
                     data-mlr-fixture-id="apple-coords-sll"
                   >
                     Open
@@ -290,13 +293,14 @@
                   <h3>Google Maps search (api=1)</h3>
                   <span class="mlr-pill mlr-pill--sand">Place search</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route to your preferred app.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://www.google.com/maps/search/?api=1&query=Pizza%20near%20Union%20Square"
+                    href="https://www.google.com/maps/search/?api=1&query=Sydney%20Opera%20House%2C%20Sydney"
                     data-mlr-fixture-id="google-search-api"
                   >
                     Open
@@ -323,13 +327,14 @@
                   <h3>Google Maps coordinates (query)</h3>
                   <span class="mlr-pill mlr-pill--sky">Coordinate-only</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route by coordinates.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://www.google.com/maps/search/?api=1&query=37.7765,-122.4167"
+                    href="https://www.google.com/maps/search/?api=1&query=51.500729,-0.124625"
                     data-mlr-fixture-id="google-coords-query"
                   >
                     Open
@@ -356,13 +361,14 @@
                   <h3>Apple Maps directions</h3>
                   <span class="mlr-pill mlr-pill--orange">Directions</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route with directions.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://maps.apple.com/?daddr=1%20Infinite%20Loop%2C%20Cupertino&dirflg=d"
+                    href="https://maps.apple.com/?daddr=Colosseum%2C%20Rome&dirflg=d"
                     data-mlr-fixture-id="apple-directions"
                   >
                     Open
@@ -389,13 +395,14 @@
                   <h3>Google Maps directions (api=1)</h3>
                   <span class="mlr-pill mlr-pill--orange">Directions</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route with directions.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://www.google.com/maps/dir/?api=1&destination=Golden%20Gate%20Bridge&origin=Ferry%20Building&travelmode=driving"
+                    href="https://www.google.com/maps/dir/?api=1&destination=Statue%20of%20Liberty%2C%20New%20York%2C%20NY&origin=Rockefeller%20Center%2C%20New%20York%2C%20NY&travelmode=driving"
                     data-mlr-fixture-id="google-directions-api"
                   >
                     Open
@@ -422,6 +429,7 @@
                   <h3>Google Maps place (cid)</h3>
                   <span class="mlr-pill mlr-pill--sand">CID canonicalization</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: may briefly open Google Maps
                   to resolve this place.
@@ -429,7 +437,7 @@
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://www.google.com/maps?cid=10281119596374313554"
+                    href="https://www.google.com/maps?cid=10222232094831998944"
                     data-mlr-fixture-id="google-cid"
                   >
                     Open
@@ -456,6 +464,7 @@
                   <h3>Google short link</h3>
                   <span class="mlr-pill mlr-pill--sand">Short link (no redirect)</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: no redirect (short links
                   are intentionally not expanded).
@@ -463,7 +472,7 @@
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://maps.app.goo.gl/2Z1wQb6CokX3gnvA8"
+                    href="https://maps.app.goo.gl/zTR7dsueJvREzU84A"
                     data-mlr-fixture-id="google-shortlink"
                   >
                     Open
@@ -490,6 +499,7 @@
                   <h3>Waze stable link</h3>
                   <span class="mlr-pill mlr-pill--sand">Same-provider</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: may be left unchanged if
                   Waze is the preferred app.
@@ -497,7 +507,7 @@
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://waze.com/ul?ll=37.7765,-122.4167&navigate=yes"
+                    href="https://waze.com/ul?ll=35.658581,139.745433&navigate=yes"
                     data-mlr-fixture-id="waze-stable"
                   >
                     Open
@@ -524,13 +534,14 @@
                   <h3>Apple Maps search (address)</h3>
                   <span class="mlr-pill mlr-pill--sand">Place search</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route to your preferred app.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://maps.apple.com/?address=1600%20Amphitheatre%20Parkway%2C%20Mountain%20View"
+                    href="https://maps.apple.com/?address=1600%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC"
                     data-mlr-fixture-id="apple-search-address"
                   >
                     Open
@@ -557,6 +568,7 @@
                   <h3>Google wrapper (/url)</h3>
                   <span class="mlr-pill mlr-pill--orange">Wrapper unroll</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: unwrap to a stable Google
                   Maps URL first.
@@ -564,7 +576,7 @@
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DCentral%2520Park"
+                    href="https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSagrada%2520Fam%25C3%25ADlia%252C%2520Barcelona"
                     data-mlr-fixture-id="google-wrapper-url"
                   >
                     Open
@@ -591,13 +603,14 @@
                   <h3>Google legacy search (q)</h3>
                   <span class="mlr-pill mlr-pill--sand">Legacy search</span>
                 </div>
+                <p class="mlr-muted" data-mlr-destination hidden></p>
                 <p class="mlr-muted" data-mlr-expected>
                   Expected when MapLink Router is active: route to your preferred app.
                 </p>
                 <div class="mlr-fixture-actions">
                   <a
                     class="mlr-button mlr-button--primary"
-                    href="https://www.google.com/maps?q=San%20Jose%20City%20Hall"
+                    href="https://www.google.com/maps?q=Burj%20Khalifa%2C%20Dubai"
                     data-mlr-fixture-id="google-legacy-q"
                   >
                     Open
@@ -624,15 +637,12 @@
       </section>
     </main>
 
-    <footer class="mlr-section mlr-footer">
-      <div class="mlr-container mlr-stack">
-        <p class="mlr-muted">
-          Opening installed apps from Safari is best-effort. If Safari remembers a
-          prior choice such as “open in browser,” that choice may take precedence.
-        </p>
-        <p class="mlr-muted">
-          Diagnostics are performed locally; no test URLs are sent to a server.
-        </p>
+    <footer class="mlr-footer">
+      <div class="mlr-container mlr-footer-content">
+        <div>
+          <strong>Privacy:</strong> No analytics, no telemetry, no tracking.
+          Link handling stays on-device.
+        </div>
         <div class="mlr-footer-links" aria-label="Footer">
           <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/privacy/">Privacy</a>
           <a class="mlr-nav-link" href="https://maplinkrouter.sigmology.ch/support/">Support</a>

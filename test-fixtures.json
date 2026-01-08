@@ -5,79 +5,92 @@
       "id": "apple-search-q",
       "title": "Apple Maps search (q)",
       "intentType": "place",
-      "url": "https://maps.apple.com/?q=Coffee%20Shop%20San%20Francisco"
+      "destinationLabel": "Eiffel Tower (Paris, France)",
+      "url": "https://maps.apple.com/?q=Eiffel%20Tower%2C%20Paris"
     },
     {
       "id": "apple-coords-ll",
       "title": "Apple Maps coordinates (ll)",
       "intentType": "coordinate-only",
-      "url": "https://maps.apple.com/?ll=37.7758,-122.4182"
+      "destinationLabel": "Statue of Liberty (New York City, USA)",
+      "url": "https://maps.apple.com/?ll=40.689247,-74.044502"
     },
     {
       "id": "apple-coords-sll",
       "title": "Apple Maps coordinates (sll)",
       "intentType": "coordinate-only",
-      "url": "https://maps.apple.com/?sll=37.3318,-122.0312"
+      "destinationLabel": "Golden Gate Bridge (San Francisco, USA)",
+      "url": "https://maps.apple.com/?sll=37.819929,-122.478255"
     },
     {
       "id": "google-search-api",
       "title": "Google Maps search (api=1)",
       "intentType": "place",
-      "url": "https://www.google.com/maps/search/?api=1&query=Pizza%20near%20Union%20Square"
+      "destinationLabel": "Sydney Opera House (Sydney, Australia)",
+      "url": "https://www.google.com/maps/search/?api=1&query=Sydney%20Opera%20House%2C%20Sydney"
     },
     {
       "id": "google-coords-query",
       "title": "Google Maps coordinates (query)",
       "intentType": "coordinate-only",
-      "url": "https://www.google.com/maps/search/?api=1&query=37.7765,-122.4167"
+      "destinationLabel": "Big Ben (London, UK)",
+      "url": "https://www.google.com/maps/search/?api=1&query=51.500729,-0.124625"
     },
     {
       "id": "apple-directions",
       "title": "Apple Maps directions",
       "intentType": "directions",
-      "url": "https://maps.apple.com/?daddr=1%20Infinite%20Loop%2C%20Cupertino&dirflg=d"
+      "destinationLabel": "Colosseum (Rome, Italy)",
+      "url": "https://maps.apple.com/?daddr=Colosseum%2C%20Rome&dirflg=d"
     },
     {
       "id": "google-directions-api",
       "title": "Google Maps directions (api=1)",
       "intentType": "directions",
-      "url": "https://www.google.com/maps/dir/?api=1&destination=Golden%20Gate%20Bridge&origin=Ferry%20Building&travelmode=driving"
+      "destinationLabel": "Rockefeller Center → Statue of Liberty (New York City, USA)",
+      "url": "https://www.google.com/maps/dir/?api=1&destination=Statue%20of%20Liberty%2C%20New%20York%2C%20NY&origin=Rockefeller%20Center%2C%20New%20York%2C%20NY&travelmode=driving"
     },
     {
       "id": "google-cid",
       "title": "Google Maps place (cid)",
       "intentType": "cid-canonicalization",
-      "url": "https://www.google.com/maps?cid=10281119596374313554"
+      "destinationLabel": "Eiffel Tower (Paris, France) — cid",
+      "url": "https://www.google.com/maps?cid=10222232094831998944"
     },
     {
       "id": "google-shortlink",
       "title": "Google short link",
       "intentType": "shortlink-noop",
-      "url": "https://maps.app.goo.gl/2Z1wQb6CokX3gnvA8"
+      "destinationLabel": "Eiffel Tower (Paris, France) — short link",
+      "url": "https://maps.app.goo.gl/zTR7dsueJvREzU84A"
     },
     {
       "id": "waze-stable",
       "title": "Waze stable link",
       "intentType": "same-provider",
-      "url": "https://waze.com/ul?ll=37.7765,-122.4167&navigate=yes"
+      "destinationLabel": "Tokyo Tower (Tokyo, Japan)",
+      "url": "https://waze.com/ul?ll=35.658581,139.745433&navigate=yes"
     },
     {
       "id": "apple-search-address",
       "title": "Apple Maps search (address)",
       "intentType": "place",
-      "url": "https://maps.apple.com/?address=1600%20Amphitheatre%20Parkway%2C%20Mountain%20View"
+      "destinationLabel": "The White House (Washington, DC, USA)",
+      "url": "https://maps.apple.com/?address=1600%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC"
     },
     {
       "id": "google-wrapper-url",
       "title": "Google wrapper (/url)",
       "intentType": "wrapper-unroll",
-      "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DCentral%2520Park"
+      "destinationLabel": "Sagrada Família (Barcelona, Spain) — via wrapper",
+      "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSagrada%2520Fam%25C3%25ADlia%252C%2520Barcelona"
     },
     {
       "id": "google-legacy-q",
       "title": "Google legacy search (q)",
       "intentType": "legacy-search",
-      "url": "https://www.google.com/maps?q=San%20Jose%20City%20Hall"
+      "destinationLabel": "Burj Khalifa (Dubai, UAE)",
+      "url": "https://www.google.com/maps?q=Burj%20Khalifa%2C%20Dubai"
     }
   ]
 }

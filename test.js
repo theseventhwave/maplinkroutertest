@@ -64,9 +64,11 @@
         return;
       }
       const expected = card.querySelector("[data-mlr-expected]");
+      const destination = card.querySelector("[data-mlr-destination]");
       const link = card.querySelector("a[data-mlr-fixture-id]");
       fixtureNodes.set(fixtureId, {
         card,
+        destination,
         expected,
         link,
       });
@@ -219,6 +221,11 @@
           const fixtureNode = fixtureNodes.get(fixture.id);
           if (fixtureNode?.link && typeof fixture.url === "string") {
             fixtureNode.link.setAttribute("href", fixture.url);
+          }
+          if (fixtureNode?.destination) {
+            const label = typeof fixture.destinationLabel === "string" ? fixture.destinationLabel.trim() : "";
+            fixtureNode.destination.textContent = label ? `Destination: ${label}` : "";
+            fixtureNode.destination.hidden = !label;
           }
         });
         updateFixtureExpectations();
