@@ -3,7 +3,8 @@
   const PING_RETRY_INTERVAL_MS = 200;
   const PING_RETRY_WINDOW_MS = 2000;
   const NONCE_TTL_MS = 8000;
-  const MAX_DECISIONS = 10;
+  const MAX_DECISIONS = 3;
+  const REGION_STORAGE_KEY = "mlr_test_region";
   const SETTINGS_STEP_TEXT =
     "Safari → Extensions → MapLink Router → Settings/Options. " +
     "If you do not see it there, open Settings → Apps → Safari → Extensions → " +
@@ -14,6 +15,8 @@
     settings: null,
     environment: null,
     fixtures: new Map(),
+    region: null,
+    regions: ["eu", "us"],
     activeTimer: null,
     retryTimer: null,
     retryWindowTimer: null,
@@ -37,6 +40,7 @@
     decisionLog: document.querySelector("[data-mlr-decision-log]"),
     decisionLogEmpty: document.querySelector("[data-mlr-decision-log-empty]"),
     decisionLogList: document.querySelector("[data-mlr-decision-log-list]"),
+    regionSelect: document.querySelector("[data-mlr-region-select]"),
   };
 
   const fixtureNodes = new Map();
@@ -52,6 +56,7 @@
   });
 
   hydrateFixtureNodes();
+  initRegionSelect();
   applyStoredDecisions();
   startHandshake();
   attachActions();
@@ -160,7 +165,7 @@
   function runDiagnosis(fixtureId, button) {
     const fixture = state.fixtures.get(fixtureId);
     const fixtureNode = fixtureNodes.get(fixtureId);
-    const linkHref = fixture?.url || fixtureNode?.link?.getAttribute("href");
+    const linkHref = getFixtureUrl(fixture) || fixtureNode?.link?.getAttribute("href");
     if (!linkHref) {
       renderDiagnosis(fixtureNode?.card, {
         reason: "no_match",
@@ -187,7 +192,7 @@
   function copyFixtureLink(fixtureId, button) {
     const fixture = state.fixtures.get(fixtureId);
     const fixtureNode = fixtureNodes.get(fixtureId);
-    const linkHref = fixture?.url || fixtureNode?.link?.getAttribute("href");
+    const linkHref = getFixtureUrl(fixture) || fixtureNode?.link?.getAttribute("href");
     if (!linkHref) {
       flashButton(button, "No link found");
       return;
@@ -213,21 +218,17 @@
         if (!payload || !Array.isArray(payload.fixtures)) {
           return;
         }
+        if (Array.isArray(payload.regions) && payload.regions.length > 0) {
+          state.regions = payload.regions.slice();
+          syncRegionOptions();
+        }
         payload.fixtures.forEach((fixture) => {
           if (!fixture || typeof fixture.id !== "string") {
             return;
           }
           state.fixtures.set(fixture.id, fixture);
-          const fixtureNode = fixtureNodes.get(fixture.id);
-          if (fixtureNode?.link && typeof fixture.url === "string") {
-            fixtureNode.link.setAttribute("href", fixture.url);
-          }
-          if (fixtureNode?.destination) {
-            const label = typeof fixture.destinationLabel === "string" ? fixture.destinationLabel.trim() : "";
-            fixtureNode.destination.textContent = label ? `Destination: ${label}` : "";
-            fixtureNode.destination.hidden = !label;
-          }
         });
+        applyRegionToFixtures();
         updateFixtureExpectations();
       })
       .catch(() => {
@@ -641,12 +642,13 @@
   }
 
   function getFixtureProvider(fixture) {
-    if (!fixture || typeof fixture.url !== "string") {
+    const url = getFixtureUrl(fixture);
+    if (!url) {
       return null;
     }
     let host = null;
     try {
-      host = new URL(fixture.url).hostname;
+      host = new URL(url).hostname;
     } catch {
       return null;
     }
@@ -671,6 +673,121 @@
       return "google";
     }
     return null;
+  }
+
+  function initRegionSelect() {
+    const stored = readRegionPreference();
+    const initial = stored || detectDefaultRegion();
+    setRegion(initial, { persist: false });
+    if (!nodes.regionSelect) {
+      return;
+    }
+    nodes.regionSelect.addEventListener("change", (event) => {
+      const value = event.target.value;
+      setRegion(value, { persist: true });
+      applyRegionToFixtures();
+      updateFixtureExpectations();
+    });
+  }
+
+  function readRegionPreference() {
+    try {
+      return window.localStorage?.getItem(REGION_STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  }
+
+  function writeRegionPreference(value) {
+    try {
+      window.localStorage?.setItem(REGION_STORAGE_KEY, value);
+    } catch {
+      // Ignore storage errors.
+    }
+  }
+
+  function setRegion(value, { persist } = { persist: true }) {
+    if (!value || !state.regions.includes(value)) {
+      state.region = state.regions[0];
+    } else {
+      state.region = value;
+    }
+    if (nodes.regionSelect) {
+      nodes.regionSelect.value = state.region;
+    }
+    if (persist) {
+      writeRegionPreference(state.region);
+    }
+  }
+
+  function detectDefaultRegion() {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    if (tz.startsWith("America/")) {
+      return "us";
+    }
+    if (tz.startsWith("Europe/")) {
+      return "eu";
+    }
+    const language = navigator.language ? navigator.language.toLowerCase() : "";
+    if (language.endsWith("-us")) {
+      return "us";
+    }
+    return "eu";
+  }
+
+  function syncRegionOptions() {
+    if (!nodes.regionSelect) {
+      return;
+    }
+    const current = nodes.regionSelect.value;
+    nodes.regionSelect.textContent = "";
+    state.regions.forEach((region) => {
+      const option = document.createElement("option");
+      option.value = region;
+      option.textContent = region === "us" ? "United States" : "Europe";
+      nodes.regionSelect.appendChild(option);
+    });
+    const stored = readRegionPreference();
+    setRegion(stored || current || detectDefaultRegion(), { persist: false });
+  }
+
+  function resolveFixtureRegionData(fixture) {
+    if (!fixture || typeof fixture !== "object") {
+      return null;
+    }
+    if (fixture.regions && state.region && fixture.regions[state.region]) {
+      return fixture.regions[state.region];
+    }
+    if (fixture.url || fixture.destinationLabel) {
+      return { url: fixture.url, destinationLabel: fixture.destinationLabel };
+    }
+    return null;
+  }
+
+  function getFixtureUrl(fixture) {
+    const regionData = resolveFixtureRegionData(fixture);
+    return regionData && typeof regionData.url === "string" ? regionData.url : null;
+  }
+
+  function applyRegionToFixtures() {
+    fixtureNodes.forEach((entry, fixtureId) => {
+      const fixture = state.fixtures.get(fixtureId);
+      if (!fixture) {
+        return;
+      }
+      const regionData = resolveFixtureRegionData(fixture);
+      if (entry.link && regionData?.url) {
+        entry.link.setAttribute("href", regionData.url);
+      }
+      if (entry.destination) {
+        const label =
+          typeof regionData?.destinationLabel === "string"
+            ? regionData.destinationLabel.trim()
+            : "";
+        entry.destination.textContent = label ? `Destination: ${label}` : "";
+        entry.destination.hidden = !label;
+      }
+    });
   }
 
   function copyText(value) {

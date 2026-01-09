@@ -70,6 +70,36 @@
   padding: var(--mlr-space-4);
 }
 
+.mlr-region-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mlr-space-2);
+  padding: var(--mlr-space-4);
+  border-radius: var(--mlr-radius-md);
+  border: 1px solid rgba(221, 186, 125, 0.7);
+  background: rgba(255, 251, 237, 0.95);
+}
+
+.mlr-region-control select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(221, 186, 125, 0.9);
+  background: #ffffff;
+  font: inherit;
+}
+
+.mlr-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .mlr-status-kicker {
   font-size: 0.85rem;
   color: var(--mlr-ink-muted);
