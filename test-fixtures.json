@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "1.2",
   "regions": [
     "eu",
     "us"
@@ -9,14 +9,15 @@
       "id": "apple-search-q",
       "title": "Apple Maps search (q)",
       "intentType": "place",
+      "group": "core",
       "regions": {
         "eu": {
           "destinationLabel": "Eiffel Tower (Paris, France)",
-          "url": "https://maps.apple.com/?q=Eiffel%20Tower%2C%20Paris"
+          "url": "https://maps.apple.com/?q=Eiffel%20Tower%2C%20Paris%2C%20France"
         },
         "us": {
-          "destinationLabel": "Central Park (New York City, USA)",
-          "url": "https://maps.apple.com/?q=Central%20Park%2C%20New%20York%20City"
+          "destinationLabel": "Statue of Liberty (New York City, USA)",
+          "url": "https://maps.apple.com/?q=Statue%20of%20Liberty%2C%20New%20York%20City%2C%20USA"
         }
       }
     },
@@ -24,14 +25,15 @@
       "id": "apple-coords-ll",
       "title": "Apple Maps coordinates (ll)",
       "intentType": "coordinate-only",
+      "group": "core",
       "regions": {
         "eu": {
           "destinationLabel": "Colosseum (Rome, Italy)",
           "url": "https://maps.apple.com/?ll=41.890200,12.492200"
         },
         "us": {
-          "destinationLabel": "Statue of Liberty (New York City, USA)",
-          "url": "https://maps.apple.com/?ll=40.689247,-74.044502"
+          "destinationLabel": "Golden Gate Bridge (San Francisco, USA)",
+          "url": "https://maps.apple.com/?ll=37.819929,-122.478255"
         }
       }
     },
@@ -39,14 +41,15 @@
       "id": "apple-coords-sll",
       "title": "Apple Maps coordinates (sll)",
       "intentType": "coordinate-only",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Sagrada Familia (Barcelona, Spain)",
-          "url": "https://maps.apple.com/?sll=41.403630,2.174356"
+          "destinationLabel": "Big Ben (London, UK)",
+          "url": "https://maps.apple.com/?sll=51.500729,-0.124625"
         },
         "us": {
-          "destinationLabel": "Golden Gate Bridge (San Francisco, USA)",
-          "url": "https://maps.apple.com/?sll=37.819929,-122.478255"
+          "destinationLabel": "Grand Canyon (Arizona, USA)",
+          "url": "https://maps.apple.com/?sll=36.106965,-112.112997"
         }
       }
     },
@@ -54,14 +57,15 @@
       "id": "google-search-api",
       "title": "Google Maps search (api=1)",
       "intentType": "place",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Louvre Museum (Paris, France)",
-          "url": "https://www.google.com/maps/search/?api=1&query=Louvre%20Museum%2C%20Paris"
+          "destinationLabel": "Sagrada Familia (Barcelona, Spain)",
+          "url": "https://www.google.com/maps/search/?api=1&query=Sagrada%20Familia%2C%20Barcelona%2C%20Spain"
         },
         "us": {
-          "destinationLabel": "Times Square (New York City, USA)",
-          "url": "https://www.google.com/maps/search/?api=1&query=Times%20Square%2C%20New%20York%20City"
+          "destinationLabel": "Central Park (New York City, USA)",
+          "url": "https://www.google.com/maps/search/?api=1&query=Central%20Park%2C%20New%20York%20City%2C%20USA"
         }
       }
     },
@@ -69,14 +73,15 @@
       "id": "google-coords-query",
       "title": "Google Maps coordinates (query)",
       "intentType": "coordinate-only",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Big Ben (London, UK)",
-          "url": "https://www.google.com/maps/search/?api=1&query=51.500729,-0.124625"
+          "destinationLabel": "Tower Bridge (London, UK)",
+          "url": "https://www.google.com/maps/search/?api=1&query=51.505456,-0.075356"
         },
         "us": {
-          "destinationLabel": "Space Needle (Seattle, WA, USA)",
-          "url": "https://www.google.com/maps/search/?api=1&query=47.620500,-122.349300"
+          "destinationLabel": "Zion National Park (Utah, USA)",
+          "url": "https://www.google.com/maps/search/?api=1&query=37.298202,-113.026300"
         }
       }
     },
@@ -84,14 +89,15 @@
       "id": "apple-directions",
       "title": "Apple Maps directions",
       "intentType": "directions",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Colosseum (Rome, Italy)",
-          "url": "https://maps.apple.com/?daddr=Colosseum%2C%20Rome&dirflg=d"
+          "destinationLabel": "British Museum to Tower of London (London, UK)",
+          "url": "https://maps.apple.com/?saddr=British%20Museum%2C%20London&daddr=Tower%20of%20London%2C%20London&dirflg=d"
         },
         "us": {
-          "destinationLabel": "Golden Gate Bridge (San Francisco, USA)",
-          "url": "https://maps.apple.com/?daddr=Golden%20Gate%20Bridge%2C%20San%20Francisco&dirflg=d"
+          "destinationLabel": "Rockefeller Center to Empire State Building (New York City, USA)",
+          "url": "https://maps.apple.com/?saddr=Rockefeller%20Center%2C%20New%20York%20City&daddr=Empire%20State%20Building%2C%20New%20York%20City&dirflg=d"
         }
       }
     },
@@ -99,14 +105,15 @@
       "id": "google-directions-api",
       "title": "Google Maps directions (api=1)",
       "intentType": "directions",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Brandenburg Gate \u2192 Berlin Cathedral (Berlin, Germany)",
-          "url": "https://www.google.com/maps/dir/?api=1&destination=Berlin%20Cathedral%2C%20Berlin&origin=Brandenburg%20Gate%2C%20Berlin&travelmode=driving"
+          "destinationLabel": "Royal Palace to Vasa Museum (Stockholm, Sweden)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Royal%20Palace%2C%20Stockholm&destination=Vasa%20Museum%2C%20Stockholm&travelmode=driving"
         },
         "us": {
-          "destinationLabel": "Rockefeller Center \u2192 Statue of Liberty (New York City, USA)",
-          "url": "https://www.google.com/maps/dir/?api=1&destination=Statue%20of%20Liberty%2C%20New%20York%2C%20NY&origin=Rockefeller%20Center%2C%20New%20York%2C%20NY&travelmode=driving"
+          "destinationLabel": "Union Station to White House (Washington, DC, USA)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Union%20Station%2C%20Washington%2C%20DC&destination=White%20House%2C%20Washington%2C%20DC&travelmode=driving"
         }
       }
     },
@@ -114,14 +121,15 @@
       "id": "google-cid",
       "title": "Google Maps place (cid)",
       "intentType": "cid-canonicalization",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Eiffel Tower (Paris, France) \u2014 cid",
-          "url": "https://www.google.com/maps?cid=10222232094831998944"
+          "destinationLabel": "Atomium (Brussels, Belgium) cid",
+          "url": "https://www.google.com/maps?cid=5950107355577726729"
         },
         "us": {
-          "destinationLabel": "Statue of Liberty (New York City, USA) \u2014 cid",
-          "url": "https://www.google.com/maps?cid=4667599994556318251"
+          "destinationLabel": "Griffith Observatory (Los Angeles, CA, USA) cid",
+          "url": "https://www.google.com/maps?cid=8358407893482396380"
         }
       }
     },
@@ -129,14 +137,15 @@
       "id": "google-shortlink",
       "title": "Google short link",
       "intentType": "shortlink-noop",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Eiffel Tower (Paris, France) \u2014 short link",
-          "url": "https://maps.app.goo.gl/qAQfyEDpWq9Zvaxn8"
+          "destinationLabel": "Mont Saint-Michel (France) short link",
+          "url": "https://maps.app.goo.gl/YieDJ8bu7Nn7uHSc6"
         },
         "us": {
-          "destinationLabel": "Statue of Liberty (New York City, USA) \u2014 short link",
-          "url": "https://maps.app.goo.gl/u7ccRXuuBcLqoWNY9"
+          "destinationLabel": "Yosemite Valley (California, USA) short link",
+          "url": "https://maps.app.goo.gl/gH1jGZLhMKvZK5TXA"
         }
       }
     },
@@ -144,6 +153,7 @@
       "id": "waze-stable",
       "title": "Waze stable link",
       "intentType": "same-provider",
+      "group": "core",
       "regions": {
         "eu": {
           "destinationLabel": "Zurich HB (Zurich, Switzerland)",
@@ -159,14 +169,15 @@
       "id": "apple-search-address",
       "title": "Apple Maps search (address)",
       "intentType": "place",
+      "group": "core",
       "regions": {
         "eu": {
           "destinationLabel": "10 Downing Street (London, UK)",
-          "url": "https://maps.apple.com/?address=10%20Downing%20Street%2C%20London"
+          "url": "https://maps.apple.com/?address=10%20Downing%20Street%2C%20London%2C%20UK"
         },
         "us": {
           "destinationLabel": "1600 Pennsylvania Avenue NW (Washington, DC, USA)",
-          "url": "https://maps.apple.com/?address=1600%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC"
+          "url": "https://maps.apple.com/?address=1600%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC%2C%20USA"
         }
       }
     },
@@ -174,14 +185,15 @@
       "id": "google-wrapper-url",
       "title": "Google wrapper (/url)",
       "intentType": "wrapper-unroll",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Sagrada Familia (Barcelona, Spain) \u2014 via wrapper",
-          "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSagrada%2520Familia%252C%2520Barcelona"
+          "destinationLabel": "Louvre Museum (Paris, France) via wrapper",
+          "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DLouvre%2520Museum%252C%2520Paris%252C%2520France"
         },
         "us": {
-          "destinationLabel": "Golden Gate Bridge (San Francisco, USA) \u2014 via wrapper",
-          "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DGolden%2520Gate%2520Bridge%252C%2520San%2520Francisco"
+          "destinationLabel": "National Mall (Washington, DC, USA) via wrapper",
+          "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DNational%2520Mall%252C%2520Washington%252C%2520DC%252C%2520USA"
         }
       }
     },
@@ -189,14 +201,495 @@
       "id": "google-legacy-q",
       "title": "Google legacy search (q)",
       "intentType": "legacy-search",
+      "group": "core",
       "regions": {
         "eu": {
-          "destinationLabel": "Acropolis (Athens, Greece)",
-          "url": "https://www.google.com/maps?q=Acropolis%2C%20Athens"
+          "destinationLabel": "Edinburgh Castle (Edinburgh, Scotland) legacy",
+          "url": "https://www.google.com/maps?q=Edinburgh%20Castle%2C%20Edinburgh%2C%20Scotland"
         },
         "us": {
-          "destinationLabel": "Willis Tower (Chicago, IL, USA)",
-          "url": "https://www.google.com/maps?q=Willis%20Tower%2C%20Chicago"
+          "destinationLabel": "Gateway Arch (St Louis, MO, USA) legacy",
+          "url": "https://www.google.com/maps?q=Gateway%20Arch%2C%20St%20Louis%2C%20MO%2C%20USA"
+        }
+      }
+    },
+    {
+      "id": "apple-directions-walk",
+      "title": "Apple Maps directions (walking)",
+      "intentType": "directions",
+      "group": "apple-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Charles Bridge (Prague, Czech Republic)",
+          "url": "https://maps.apple.com/?daddr=Charles%20Bridge%2C%20Prague&dirflg=w"
+        },
+        "us": {
+          "destinationLabel": "Navy Pier (Chicago, IL, USA)",
+          "url": "https://maps.apple.com/?daddr=Navy%20Pier%2C%20Chicago&dirflg=w"
+        }
+      }
+    },
+    {
+      "id": "apple-directions-transit",
+      "title": "Apple Maps directions (transit)",
+      "intentType": "directions",
+      "group": "apple-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Gare du Nord (Paris, France)",
+          "url": "https://maps.apple.com/?daddr=Gare%20du%20Nord%2C%20Paris&dirflg=r"
+        },
+        "us": {
+          "destinationLabel": "Coit Tower (San Francisco, CA, USA)",
+          "url": "https://maps.apple.com/?daddr=Coit%20Tower%2C%20San%20Francisco&dirflg=r"
+        }
+      }
+    },
+    {
+      "id": "apple-directions-saddr",
+      "title": "Apple Maps directions (with origin)",
+      "intentType": "directions",
+      "group": "apple-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Rijksmuseum from Dam Square (Amsterdam, Netherlands)",
+          "url": "https://maps.apple.com/?saddr=Dam%20Square%2C%20Amsterdam&daddr=Rijksmuseum%2C%20Amsterdam&dirflg=d"
+        },
+        "us": {
+          "destinationLabel": "Pike Place Market from Space Needle (Seattle, WA, USA)",
+          "url": "https://maps.apple.com/?saddr=Space%20Needle%2C%20Seattle&daddr=Pike%20Place%20Market%2C%20Seattle&dirflg=d"
+        }
+      }
+    },
+    {
+      "id": "apple-directions-no-mode",
+      "title": "Apple Maps directions (no mode)",
+      "intentType": "directions",
+      "group": "apple-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Alhambra (Granada, Spain)",
+          "url": "https://maps.apple.com/?daddr=Alhambra%2C%20Granada%2C%20Spain"
+        },
+        "us": {
+          "destinationLabel": "Alamo (San Antonio, TX, USA)",
+          "url": "https://maps.apple.com/?daddr=Alamo%2C%20San%20Antonio%2C%20TX%2C%20USA"
+        }
+      }
+    },
+    {
+      "id": "apple-directions-unsupported-mode",
+      "title": "Apple Maps directions (unsupported mode)",
+      "intentType": "directions",
+      "group": "apple-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Pompeii Ruins (Italy)",
+          "url": "https://maps.apple.com/?daddr=Pompeii%20Ruins%2C%20Italy&dirflg=b"
+        },
+        "us": {
+          "destinationLabel": "Key West (Florida, USA)",
+          "url": "https://maps.apple.com/?daddr=Key%20West%2C%20Florida%2C%20USA&dirflg=b"
+        }
+      }
+    },
+    {
+      "id": "apple-search-q-ll",
+      "title": "Apple Maps search (q + ll)",
+      "intentType": "place",
+      "group": "apple-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Matterhorn (Zermatt, Switzerland)",
+          "url": "https://maps.apple.com/?q=Matterhorn%2C%20Zermatt%2C%20Switzerland&ll=45.976300,7.658600"
+        },
+        "us": {
+          "destinationLabel": "Bryce Canyon (Utah, USA)",
+          "url": "https://maps.apple.com/?q=Bryce%20Canyon%2C%20Utah%2C%20USA&ll=37.593000,-112.187100"
+        }
+      }
+    },
+    {
+      "id": "apple-stable",
+      "title": "Apple Maps stable link",
+      "intentType": "place",
+      "group": "apple-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Neuschwanstein Castle (Bavaria, Germany)",
+          "url": "https://maps.apple.com/?q=Neuschwanstein%20Castle%2C%20Bavaria%2C%20Germany"
+        },
+        "us": {
+          "destinationLabel": "Hoover Dam (Nevada, USA)",
+          "url": "https://maps.apple.com/?q=Hoover%20Dam%2C%20Boulder%20City%2C%20NV"
+        }
+      }
+    },
+    {
+      "id": "google-search-path",
+      "title": "Google Maps search (path)",
+      "intentType": "place",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "St Peters Basilica (Vatican City)",
+          "url": "https://www.google.com/maps/search/St+Peters+Basilica+Vatican+City"
+        },
+        "us": {
+          "destinationLabel": "Mount Whitney (California, USA)",
+          "url": "https://www.google.com/maps/search/Mount+Whitney+California"
+        }
+      }
+    },
+    {
+      "id": "google-dir-path",
+      "title": "Google Maps directions (path)",
+      "intentType": "directions",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Stephansdom to Schonbrunn Palace (Vienna, Austria)",
+          "url": "https://www.google.com/maps/dir/Stephansdom,+Vienna/Schonbrunn+Palace,+Vienna"
+        },
+        "us": {
+          "destinationLabel": "Santa Monica Pier to Getty Center (Los Angeles, CA, USA)",
+          "url": "https://www.google.com/maps/dir/Santa+Monica+Pier/Getty+Center+Los+Angeles"
+        }
+      }
+    },
+    {
+      "id": "google-directions-api-transit",
+      "title": "Google Maps directions (transit)",
+      "intentType": "directions",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Uffizi Gallery to Ponte Vecchio (Florence, Italy)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Uffizi%20Gallery%2C%20Florence&destination=Ponte%20Vecchio%2C%20Florence&travelmode=transit"
+        },
+        "us": {
+          "destinationLabel": "Freedom Trail to Harvard Square (Boston, MA, USA)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Freedom%20Trail%2C%20Boston&destination=Harvard%20Square%2C%20Cambridge%2C%20MA&travelmode=transit"
+        }
+      }
+    },
+    {
+      "id": "google-directions-api-bicycling",
+      "title": "Google Maps directions (bicycling)",
+      "intentType": "directions",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Royal Mile to Calton Hill (Edinburgh, Scotland)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Royal%20Mile%2C%20Edinburgh&destination=Calton%20Hill%2C%20Edinburgh&travelmode=bicycling"
+        },
+        "us": {
+          "destinationLabel": "Madison Square Park to Brooklyn Bridge (New York City, USA)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Madison%20Square%20Park%2C%20New%20York&destination=Brooklyn%20Bridge%2C%20New%20York&travelmode=bicycling"
+        }
+      }
+    },
+    {
+      "id": "google-directions-api-two-wheeler",
+      "title": "Google Maps directions (two-wheeler)",
+      "intentType": "directions",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Casa Batllo to Park Guell (Barcelona, Spain)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Casa%20Batllo%2C%20Barcelona&destination=Park%20Guell%2C%20Barcelona&travelmode=two-wheeler"
+        },
+        "us": {
+          "destinationLabel": "Las Vegas Strip to Red Rock Canyon (Nevada, USA)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Las%20Vegas%20Strip%2C%20Las%20Vegas%2C%20NV&destination=Red%20Rock%20Canyon%2C%20Nevada&travelmode=two-wheeler"
+        }
+      }
+    },
+    {
+      "id": "google-host-maps-tld",
+      "title": "Google Maps host (maps.google.tld)",
+      "intentType": "place",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Musee d'Orsay (Paris, France)",
+          "url": "https://maps.google.ch/maps/search/?api=1&query=Musee%20d%27Orsay%2C%20Paris%2C%20France"
+        },
+        "us": {
+          "destinationLabel": "Getty Museum (Los Angeles, CA, USA)",
+          "url": "https://maps.google.com/maps/search/?api=1&query=Getty%20Museum%2C%20Los%20Angeles%2C%20CA"
+        }
+      }
+    },
+    {
+      "id": "google-host-root-tld",
+      "title": "Google Maps host (google.tld)",
+      "intentType": "place",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Sacré-Cœur (Paris, France)",
+          "url": "https://google.fr/maps/search/?api=1&query=Sacr%C3%A9-C%C5%93ur%2C%20Paris%2C%20France"
+        },
+        "us": {
+          "destinationLabel": "Balboa Park (San Diego, CA, USA)",
+          "url": "https://google.com/maps/search/?api=1&query=Balboa%20Park%2C%20San%20Diego%2C%20CA"
+        }
+      }
+    },
+    {
+      "id": "google-at-coords",
+      "title": "Google Maps coordinates (@lat,lon,zoom)",
+      "intentType": "coordinate-only",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Cinque Terre (Italy)",
+          "url": "https://www.google.com/maps/@44.119400,9.710000,12z"
+        },
+        "us": {
+          "destinationLabel": "Mount St Helens (Washington, USA)",
+          "url": "https://www.google.com/maps/@46.191200,-122.194400,12z"
+        }
+      }
+    },
+    {
+      "id": "google-placeid-query",
+      "title": "Google Maps search (query_place_id)",
+      "intentType": "place",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Stonehenge (UK)",
+          "url": "https://www.google.com/maps/search/?api=1&query=Stonehenge%2C%20UK&query_place_id=ChIJEfYKhTvmc0gR3dLTvOJwkZc"
+        },
+        "us": {
+          "destinationLabel": "Mount Vernon (Virginia, USA)",
+          "url": "https://www.google.com/maps/search/?api=1&query=Mount%20Vernon%2C%20Virginia%2C%20USA&query_place_id=ChIJf79A8SWst4kR8ZpjUoijvXY"
+        }
+      }
+    },
+    {
+      "id": "google-placeid-destination",
+      "title": "Google Maps directions (destination_place_id)",
+      "intentType": "directions",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Bruges Markt (Bruges, Belgium)",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Bruges%20Markt%2C%20Bruges%2C%20Belgium&destination_place_id=ChIJDRP74RhRw0cRxAzuPfxKTw4"
+        },
+        "us": {
+          "destinationLabel": "Independence Hall (Philadelphia, PA, USA)",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Independence%20Hall%2C%20Philadelphia%2C%20PA&destination_place_id=ChIJd8kca4PIxokRqW59OWceihQ"
+        }
+      }
+    },
+    {
+      "id": "google-placeid-origin",
+      "title": "Google Maps directions (origin_place_id)",
+      "intentType": "directions",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "St Vitus Cathedral from Old Town Square (Prague, Czech Republic)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Old%20Town%20Square%2C%20Prague&origin_place_id=ChIJU0I_FemUC0cR9_0liUPfBf0&destination=St%20Vitus%20Cathedral%2C%20Prague&destination_place_id=ChIJW08COB6VC0cRoonZ8lA4rWk"
+        },
+        "us": {
+          "destinationLabel": "Mission San Juan Capistrano from San Diego Zoo (California, USA)",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=San%20Diego%20Zoo%2C%20San%20Diego%2C%20CA&origin_place_id=ChIJyYB_SZVU2YARR-I1Jjf08F0&destination=Mission%20San%20Juan%20Capistrano%2C%20CA&destination_place_id=ChIJW9OYYubx3IARV6DH-laT6RM"
+        }
+      }
+    },
+    {
+      "id": "google-legacy-q-plus",
+      "title": "Google legacy search (q with +)",
+      "intentType": "legacy-search",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Sistine Chapel (Vatican City)",
+          "url": "https://www.google.com/maps?q=Sistine+Chapel+Vatican+City"
+        },
+        "us": {
+          "destinationLabel": "Pioneer Square (Seattle, WA, USA)",
+          "url": "https://www.google.com/maps?q=Pioneer+Square+Seattle+WA"
+        }
+      }
+    },
+    {
+      "id": "google-stable",
+      "title": "Google Maps stable link",
+      "intentType": "place",
+      "group": "google-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Buckingham Palace (London, UK)",
+          "url": "https://www.google.com/maps/place/Buckingham+Palace/"
+        },
+        "us": {
+          "destinationLabel": "Wrigley Field (Chicago, IL, USA)",
+          "url": "https://www.google.com/maps/place/Wrigley+Field/"
+        }
+      }
+    },
+    {
+      "id": "google-wrapper-ambiguous",
+      "title": "Google wrapper (ambiguous)",
+      "intentType": "wrapper-ambiguous",
+      "group": "wrappers-shortlinks",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Porto Ribeira (Porto, Portugal) ambiguous wrapper",
+          "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DPorto%2520Ribeira%252C%2520Porto%252C%2520Portugal&q=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DPorto%2520Ribeira%252C%2520Porto%252C%2520Portugal"
+        },
+        "us": {
+          "destinationLabel": "Aspen Mountain (Colorado, USA) ambiguous wrapper",
+          "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DAspen%2520Mountain%252C%2520Colorado%252C%2520USA&q=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DAspen%2520Mountain%252C%2520Colorado%252C%2520USA"
+        }
+      }
+    },
+    {
+      "id": "google-wrapper-q",
+      "title": "Google wrapper (q=)",
+      "intentType": "wrapper-unroll",
+      "group": "wrappers-shortlinks",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Leaning Tower of Pisa (Italy) via wrapper",
+          "url": "https://www.google.com/url?q=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DLeaning%2520Tower%2520of%2520Pisa%252C%2520Italy"
+        },
+        "us": {
+          "destinationLabel": "Monument Valley (Arizona, USA) via wrapper",
+          "url": "https://www.google.com/url?q=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DMonument%2520Valley%252C%2520Arizona%252C%2520USA"
+        }
+      }
+    },
+    {
+      "id": "google-wrapper-nested-fragment",
+      "title": "Google wrapper (nested fragment)",
+      "intentType": "wrapper-unroll",
+      "group": "wrappers-shortlinks",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Montserrat Monastery (Spain) via wrapper fragment",
+          "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DMontserrat%2520Monastery%252C%2520Spain%23details"
+        },
+        "us": {
+          "destinationLabel": "Arches National Park (Utah, USA) via wrapper fragment",
+          "url": "https://www.google.com/url?url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DArches%2520National%2520Park%252C%2520Utah%252C%2520USA%23details"
+        }
+      }
+    },
+    {
+      "id": "google-shortlink-goo",
+      "title": "Google short link (goo.gl)",
+      "intentType": "shortlink-noop",
+      "group": "wrappers-shortlinks",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Plitvice Lakes (Croatia) short link",
+          "url": "https://maps.app.goo.gl/EB4U4gmPe8AbYen68"
+        },
+        "us": {
+          "destinationLabel": "Mount Katahdin (Maine, USA) short link",
+          "url": "https://maps.app.goo.gl/Pn26fCSTuafXWx789"
+        }
+      }
+    },
+    {
+      "id": "waze-stable-no-navigate",
+      "title": "Waze stable link (no navigate)",
+      "intentType": "same-provider",
+      "group": "waze-variants",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Copenhagen Opera House (Denmark)",
+          "url": "https://waze.com/ul?ll=55.681300,12.600900"
+        },
+        "us": {
+          "destinationLabel": "French Quarter (New Orleans, LA, USA)",
+          "url": "https://waze.com/ul?ll=29.958400,-90.064400"
+        }
+      }
+    },
+    {
+      "id": "encoding-plus-space",
+      "title": "Encoding edge (plus spaces)",
+      "intentType": "place",
+      "group": "edge-cases",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Glasgow Cathedral (Glasgow, Scotland)",
+          "url": "https://www.google.com/maps/search/?api=1&query=Glasgow+Cathedral+Glasgow"
+        },
+        "us": {
+          "destinationLabel": "Palm Springs Art Museum (California, USA)",
+          "url": "https://www.google.com/maps/search/?api=1&query=Palm+Springs+Art+Museum+California"
+        }
+      }
+    },
+    {
+      "id": "encoding-percent",
+      "title": "Encoding edge (percent escaped)",
+      "intentType": "place",
+      "group": "edge-cases",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Lisbon Cathedral (Lisbon, Portugal)",
+          "url": "https://maps.apple.com/?q=Lisbon%20Cathedral%2C%20Lisbon%2C%20Portugal"
+        },
+        "us": {
+          "destinationLabel": "Cape Hatteras Lighthouse (North Carolina, USA)",
+          "url": "https://maps.apple.com/?q=Cape%20Hatteras%20Lighthouse%2C%20North%20Carolina%2C%20USA"
+        }
+      }
+    },
+    {
+      "id": "coords-bounds-valid",
+      "title": "Coordinates bounds (valid)",
+      "intentType": "coordinate-only",
+      "group": "edge-cases",
+      "regions": {
+        "eu": {
+          "destinationLabel": "near coordinate bounds north east",
+          "url": "https://maps.apple.com/?ll=89.999000,179.999000"
+        },
+        "us": {
+          "destinationLabel": "near coordinate bounds south west",
+          "url": "https://maps.apple.com/?ll=-89.999000,-179.999000"
+        }
+      }
+    },
+    {
+      "id": "coords-bounds-invalid",
+      "title": "Coordinates bounds (invalid)",
+      "intentType": "invalid-coords",
+      "group": "edge-cases",
+      "regions": {
+        "eu": {
+          "destinationLabel": "out of bounds coordinates north",
+          "url": "https://maps.apple.com/?ll=95.000000,200.000000"
+        },
+        "us": {
+          "destinationLabel": "out of bounds coordinates west",
+          "url": "https://maps.apple.com/?ll=95.000000,200.000000"
+        }
+      }
+    },
+    {
+      "id": "unsupported-garbage",
+      "title": "Unsupported map-like link",
+      "intentType": "unsupported",
+      "group": "edge-cases",
+      "regions": {
+        "eu": {
+          "destinationLabel": "Example.com with Colosseum query",
+          "url": "https://example.com/location?place=Colosseum"
+        },
+        "us": {
+          "destinationLabel": "Example.com with Mount Rushmore query",
+          "url": "https://example.com/location?place=Mount%20Rushmore"
         }
       }
     }

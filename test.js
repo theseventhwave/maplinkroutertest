@@ -9,6 +9,40 @@
     "Safari → Extensions → MapLink Router → Settings/Options. " +
     "If you do not see it there, open Settings → Apps → Safari → Extensions → " +
     "MapLink Router.";
+  const GROUP_ORDER = [
+    "core",
+    "apple-variants",
+    "google-variants",
+    "wrappers-shortlinks",
+    "waze-variants",
+    "edge-cases"
+  ];
+  const GROUP_METADATA = {
+    core: {
+      title: "Core (Recommended)",
+      description: "Most common links."
+    },
+    "apple-variants": {
+      title: "Apple Variants",
+      description: "Additional Apple Maps shapes."
+    },
+    "google-variants": {
+      title: "Google Variants",
+      description: "Expanded Google Maps shapes."
+    },
+    "wrappers-shortlinks": {
+      title: "Wrappers & Shortlinks",
+      description: "Wrapped and shortened URLs."
+    },
+    "waze-variants": {
+      title: "Waze Variants",
+      description: "Waze link variations."
+    },
+    "edge-cases": {
+      title: "Edge Cases",
+      description: "Encoding, bounds, and unsupported links."
+    }
+  };
 
   const state = {
     status: "unknown",
@@ -41,6 +75,8 @@
     decisionLogEmpty: document.querySelector("[data-mlr-decision-log-empty]"),
     decisionLogList: document.querySelector("[data-mlr-decision-log-list]"),
     regionSelect: document.querySelector("[data-mlr-region-select]"),
+    fixtureContainer: document.querySelector("[data-mlr-fixtures]"),
+    fixtureTemplate: document.querySelector("[data-mlr-fixture-template]"),
   };
 
   const fixtureNodes = new Map();
@@ -55,7 +91,6 @@
     node.textContent = window.location.origin;
   });
 
-  hydrateFixtureNodes();
   initRegionSelect();
   applyStoredDecisions();
   startHandshake();
@@ -63,6 +98,7 @@
   loadFixtures();
 
   function hydrateFixtureNodes() {
+    fixtureNodes.clear();
     document.querySelectorAll("[data-mlr-fixture]").forEach((card) => {
       const fixtureId = card.getAttribute("data-mlr-fixture");
       if (!fixtureId) {
@@ -216,11 +252,11 @@
       })
       .then((payload) => {
         if (!payload || !Array.isArray(payload.fixtures)) {
-          return;
-        }
-        if (Array.isArray(payload.regions) && payload.regions.length > 0) {
-          state.regions = payload.regions.slice();
-          syncRegionOptions();
+        return;
+      }
+      if (Array.isArray(payload.regions) && payload.regions.length > 0) {
+        state.regions = payload.regions.slice();
+        syncRegionOptions();
         }
         payload.fixtures.forEach((fixture) => {
           if (!fixture || typeof fixture.id !== "string") {
@@ -228,6 +264,8 @@
           }
           state.fixtures.set(fixture.id, fixture);
         });
+        renderFixtureGroups(payload.fixtures);
+        hydrateFixtureNodes();
         applyRegionToFixtures();
         updateFixtureExpectations();
       })
@@ -409,6 +447,18 @@
       return "unwraps to a stable Google Maps URL first, then routes if needed.";
     }
 
+    if (intent === "wrapper-ambiguous") {
+      return "no redirect; wrapper is ambiguous or unsafe.";
+    }
+
+    if (intent === "invalid-coords") {
+      return "no redirect; coordinates are out of bounds.";
+    }
+
+    if (intent === "unsupported") {
+      return "no redirect; unsupported or unsafe link.";
+    }
+
     if (intent === "cid-canonicalization" && (preferred === "apple" || preferred === "waze")) {
       return (
         "bounded canonicalization fallback (up to 3.0 seconds hard max). " +
@@ -417,7 +467,7 @@
       );
     }
 
-    if (intent === "same-provider" || (provider && provider === preferred)) {
+    if (provider && provider === preferred) {
       return "success may be leaving the link unchanged; iOS may still open the app.";
     }
 
@@ -886,5 +936,126 @@
       item.textContent = parts.join(" • ");
       nodes.decisionLogList.appendChild(item);
     });
+  }
+
+  function renderFixtureGroups(fixtures) {
+    if (!nodes.fixtureContainer || !nodes.fixtureTemplate) {
+      return;
+    }
+    nodes.fixtureContainer.textContent = "";
+    const groups = new Map();
+    fixtures.forEach((fixture) => {
+      const groupKey = normalizeGroupKey(fixture?.group);
+      if (!groups.has(groupKey)) {
+        groups.set(groupKey, []);
+      }
+      groups.get(groupKey).push(fixture);
+    });
+
+    GROUP_ORDER.forEach((groupKey) => {
+      const entries = groups.get(groupKey);
+      if (!entries || entries.length === 0) {
+        return;
+      }
+      const details = document.createElement("details");
+      details.className = "mlr-fixture-group";
+      details.setAttribute("data-mlr-group", groupKey);
+      if (groupKey === "core") {
+        details.open = true;
+      }
+      const summary = document.createElement("summary");
+      summary.className = "mlr-fixture-group-summary";
+      summary.setAttribute("data-mlr-group-toggle", "true");
+      const title = document.createElement("span");
+      title.className = "mlr-fixture-group-title";
+      const meta = document.createElement("span");
+      meta.className = "mlr-fixture-group-meta";
+      const metadata = GROUP_METADATA[groupKey];
+      title.textContent = metadata?.title || "Fixtures";
+      meta.textContent = metadata?.description || "";
+      summary.appendChild(title);
+      summary.appendChild(meta);
+      details.appendChild(summary);
+
+      const grid = document.createElement("div");
+      grid.className = "mlr-grid mlr-fixtures-grid";
+      entries.forEach((fixture) => {
+        const card = buildFixtureCard(fixture);
+        if (card) {
+          grid.appendChild(card);
+        }
+      });
+      details.appendChild(grid);
+      nodes.fixtureContainer.appendChild(details);
+    });
+  }
+
+  function buildFixtureCard(fixture) {
+    if (!fixture || typeof fixture.id !== "string") {
+      return null;
+    }
+    const fragment = nodes.fixtureTemplate.content.cloneNode(true);
+    const card = fragment.querySelector("[data-mlr-fixture]");
+    if (!card) {
+      return null;
+    }
+    card.setAttribute("data-mlr-fixture", fixture.id);
+    const title = fragment.querySelector("[data-mlr-fixture-title]");
+    if (title) {
+      title.textContent = fixture.title || fixture.id;
+    }
+    const intentNode = fragment.querySelector("[data-mlr-fixture-intent]");
+    if (intentNode) {
+      const badge = getIntentBadge(fixture.intentType);
+      intentNode.textContent = badge.label;
+      intentNode.classList.remove("mlr-pill--sand", "mlr-pill--sky", "mlr-pill--orange");
+      intentNode.classList.add(badge.tone);
+    }
+    const actionNodes = fragment.querySelectorAll("[data-mlr-fixture-id]");
+    actionNodes.forEach((node) => {
+      node.setAttribute("data-mlr-fixture-id", fixture.id);
+    });
+    return card;
+  }
+
+  function getIntentBadge(intentType) {
+    if (intentType === "coordinate-only") {
+      return { label: "Coordinate-only", tone: "mlr-pill--sky" };
+    }
+    if (intentType === "directions") {
+      return { label: "Directions", tone: "mlr-pill--orange" };
+    }
+    if (intentType === "cid-canonicalization") {
+      return { label: "CID canonicalization", tone: "mlr-pill--sand" };
+    }
+    if (intentType === "shortlink-noop") {
+      return { label: "Short link (no redirect)", tone: "mlr-pill--sand" };
+    }
+    if (intentType === "wrapper-unroll") {
+      return { label: "Wrapper unroll", tone: "mlr-pill--orange" };
+    }
+    if (intentType === "wrapper-ambiguous") {
+      return { label: "Wrapper ambiguous", tone: "mlr-pill--orange" };
+    }
+    if (intentType === "legacy-search") {
+      return { label: "Legacy search", tone: "mlr-pill--sand" };
+    }
+    if (intentType === "same-provider") {
+      return { label: "Same-provider", tone: "mlr-pill--sand" };
+    }
+    if (intentType === "invalid-coords") {
+      return { label: "Invalid coordinates", tone: "mlr-pill--orange" };
+    }
+    if (intentType === "unsupported") {
+      return { label: "Unsupported (no redirect)", tone: "mlr-pill--orange" };
+    }
+    return { label: "Place search", tone: "mlr-pill--sand" };
+  }
+
+  function normalizeGroupKey(group) {
+    if (GROUP_ORDER.includes(group)) {
+      return group;
+    }
+    return "core";
   }
 })();
