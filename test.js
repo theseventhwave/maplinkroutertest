@@ -426,6 +426,61 @@
     return `Expected: ${base}`;
   }
 
+  function isLatLonPair(value) {
+    if (typeof value !== "string") {
+      return false;
+    }
+    return /^-?\d+(?:\.\d+)?\s*,\s*-?\d+(?:\.\d+)?$/.test(value.trim());
+  }
+
+  function fixtureHasCoordinates(fixture) {
+    const url = getFixtureUrl(fixture);
+    if (!url) {
+      return false;
+    }
+    try {
+      const parsed = new URL(url);
+      const params = parsed.searchParams;
+      if (params.has("ll") || params.has("sll")) {
+        return true;
+      }
+      const query = params.get("query") || params.get("q");
+      if (isLatLonPair(query || "")) {
+        return true;
+      }
+      const destination = params.get("destination") || params.get("daddr");
+      if (isLatLonPair(destination || "")) {
+        return true;
+      }
+      if (/@-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?/.test(parsed.pathname)) {
+        return true;
+      }
+    } catch {
+      return false;
+    }
+    return false;
+  }
+
+  function fixtureHasOrigin(fixture) {
+    const url = getFixtureUrl(fixture);
+    if (!url) {
+      return false;
+    }
+    try {
+      const parsed = new URL(url);
+      const params = parsed.searchParams;
+      if (params.get("saddr") || params.get("origin") || params.get("origin_place_id")) {
+        return true;
+      }
+      if (parsed.pathname.includes("/maps/dir/")) {
+        return true;
+      }
+    } catch {
+      return false;
+    }
+    return false;
+  }
+
   function expectedForFixture(fixture) {
     if (!state.settings) {
       return "route to your preferred app.";
@@ -469,6 +524,22 @@
 
     if (provider && provider === preferred) {
       return "success may be leaving the link unchanged; iOS may still open the app.";
+    }
+
+    if (preferred === "waze") {
+      if (intent === "directions") {
+        const originNote = fixtureHasOrigin(fixture)
+          ? " Waze uses your current location as the start (origin may be ignored)."
+          : " Waze uses your current location as the start.";
+        const destinationNote = fixtureHasCoordinates(fixture)
+          ? ""
+          : " Text-only destinations are best-effort and may show \"No results found.\"";
+        return `route with directions to Waze.${originNote}${destinationNote}`;
+      }
+
+      if (intent === "place" && !fixtureHasCoordinates(fixture)) {
+        return "route to Waze; text-only searches are best-effort and may show \"No results found.\"";
+      }
     }
 
     if (intent === "directions") {
