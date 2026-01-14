@@ -139,9 +139,16 @@
       if (!fixtureId) {
         return;
       }
-      const isDiagnose = button.classList.contains("mlr-button--secondary");
-      const isCopy = button.classList.contains("mlr-button--ghost");
-      if (isDiagnose) {
+      const action = button.getAttribute("data-mlr-fixture-action");
+      const isDiagnose = action
+        ? action === "diagnose"
+        : button.classList.contains("mlr-button--secondary");
+      const isCopy = action ? action === "copy" : button.classList.contains("mlr-button--ghost");
+      const isNavigate = action === "navigate";
+      if (isNavigate) {
+        event.preventDefault();
+        navigateFixture(fixtureId, button);
+      } else if (isDiagnose) {
         event.preventDefault();
         runDiagnosis(fixtureId, button);
       } else if (isCopy) {
@@ -240,6 +247,17 @@
       .catch(() => {
         flashButton(button, "Press and hold to copy");
       });
+  }
+
+  function navigateFixture(fixtureId, button) {
+    const fixture = state.fixtures.get(fixtureId);
+    const fixtureNode = fixtureNodes.get(fixtureId);
+    const linkHref = getFixtureUrl(fixture) || fixtureNode?.link?.getAttribute("href");
+    if (!linkHref) {
+      flashButton(button, "No link found");
+      return;
+    }
+    window.location.assign(linkHref);
   }
 
   function loadFixtures() {
@@ -1086,6 +1104,10 @@
     actionNodes.forEach((node) => {
       node.setAttribute("data-mlr-fixture-id", fixture.id);
     });
+    const navigateButton = fragment.querySelector("[data-mlr-fixture-action=\"navigate\"]");
+    if (navigateButton && fixture.navigate === false) {
+      navigateButton.hidden = true;
+    }
     return card;
   }
 
