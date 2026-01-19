@@ -65,7 +65,6 @@
     settingsSteps: document.querySelector("[data-mlr-settings-steps]"),
     preferredApp: document.querySelector("[data-mlr-preferred-app]"),
     redirectsEnabled: document.querySelector("[data-mlr-redirects-enabled]"),
-    preferSchemes: document.querySelector("[data-mlr-prefer-schemes]"),
     retryButton: document.querySelector("[data-mlr-action=\"retry-handshake\"]"),
     settingsButton: document.querySelector("[data-mlr-action=\"settings-steps\"]"),
     guidanceSection: document.querySelector("[data-mlr-guidance=\"inactive\"]"),
@@ -391,7 +390,6 @@
     if (!settings || state.status !== "active") {
       setMetaValue(nodes.preferredApp, "Unknown");
       setMetaValue(nodes.redirectsEnabled, "Unknown");
-      setMetaValue(nodes.preferSchemes, "Unknown");
       resetPrivatePill();
       return;
     }
@@ -400,10 +398,6 @@
     setMetaValue(
       nodes.redirectsEnabled,
       settings.redirectsEnabled ? "On" : "Off"
-    );
-    setMetaValue(
-      nodes.preferSchemes,
-      settings.preferAppSchemes ? "On" : "Off"
     );
 
     if (!state.environment || !state.environment.isPrivateContextHint) {
