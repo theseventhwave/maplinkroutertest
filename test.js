@@ -409,25 +409,23 @@
       nodes.redirectsEnabled,
       settings.redirectsEnabled ? "On" : "Off"
     );
-    setMetaValue(
-      nodes.pageEntryEnabled,
-      settings.pageEntryEnabled ? "On" : "Off"
-    );
+    const pageEntryEnabled = readBoolSetting(settings, "pageEntryEnabled", true);
+    setMetaValue(nodes.pageEntryEnabled, pageEntryEnabled ? "On" : "Off");
     setMetaValue(
       nodes.pageEntryDirections,
-      formatPageEntryMode(settings.pageEntry_mode_directions)
+      formatPageEntryMode(readModeSetting(settings, "pageEntry_mode_directions"))
     );
     setMetaValue(
       nodes.pageEntryPlace,
-      formatPageEntryMode(settings.pageEntry_mode_place)
+      formatPageEntryMode(readModeSetting(settings, "pageEntry_mode_place"))
     );
     setMetaValue(
       nodes.pageEntrySearch,
-      formatPageEntryMode(settings.pageEntry_mode_search)
+      formatPageEntryMode(readModeSetting(settings, "pageEntry_mode_search"))
     );
     setMetaValue(
       nodes.pageEntryOther,
-      formatPageEntryMode(settings.pageEntry_mode_other)
+      formatPageEntryMode(readModeSetting(settings, "pageEntry_mode_other"))
     );
 
     if (!state.environment || !state.environment.isPrivateContextHint) {
@@ -657,6 +655,48 @@
       return "Off";
     }
     return "Unknown";
+  }
+
+  function readBoolSetting(settings, key, fallback) {
+    const value = readSetting(settings, key);
+    if (value === true || value === false) {
+      return value;
+    }
+    if (typeof value === "string") {
+      const normalized = value.trim().toLowerCase();
+      if (normalized === "true") return true;
+      if (normalized === "false") return false;
+    }
+    return fallback;
+  }
+
+  function readModeSetting(settings, key, fallback = "prompt") {
+    const value = readSetting(settings, key);
+    if (typeof value !== "string") {
+      return fallback;
+    }
+    const normalized = value.trim().toLowerCase();
+    if (normalized === "auto" || normalized === "off" || normalized === "prompt") {
+      return normalized;
+    }
+    if (normalized === "ask") {
+      return "prompt";
+    }
+    return fallback;
+  }
+
+  function readSetting(settings, key) {
+    if (!settings || typeof settings !== "object") {
+      return undefined;
+    }
+    if (hasOwn(settings, key)) {
+      return settings[key];
+    }
+    const camelKey = key.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+    if (camelKey !== key && hasOwn(settings, camelKey)) {
+      return settings[camelKey];
+    }
+    return undefined;
   }
 
   function createNonce() {
