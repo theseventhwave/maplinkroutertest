@@ -65,6 +65,11 @@
     settingsSteps: document.querySelector("[data-mlr-settings-steps]"),
     preferredApp: document.querySelector("[data-mlr-preferred-app]"),
     redirectsEnabled: document.querySelector("[data-mlr-redirects-enabled]"),
+    pageEntryEnabled: document.querySelector("[data-mlr-page-entry-enabled]"),
+    pageEntryDirections: document.querySelector("[data-mlr-page-entry-directions]"),
+    pageEntryPlace: document.querySelector("[data-mlr-page-entry-place]"),
+    pageEntrySearch: document.querySelector("[data-mlr-page-entry-search]"),
+    pageEntryOther: document.querySelector("[data-mlr-page-entry-other]"),
     retryButton: document.querySelector("[data-mlr-action=\"retry-handshake\"]"),
     settingsButton: document.querySelector("[data-mlr-action=\"settings-steps\"]"),
     guidanceSection: document.querySelector("[data-mlr-guidance=\"inactive\"]"),
@@ -390,6 +395,11 @@
     if (!settings || state.status !== "active") {
       setMetaValue(nodes.preferredApp, "Unknown");
       setMetaValue(nodes.redirectsEnabled, "Unknown");
+      setMetaValue(nodes.pageEntryEnabled, "Unknown");
+      setMetaValue(nodes.pageEntryDirections, "Unknown");
+      setMetaValue(nodes.pageEntryPlace, "Unknown");
+      setMetaValue(nodes.pageEntrySearch, "Unknown");
+      setMetaValue(nodes.pageEntryOther, "Unknown");
       resetPrivatePill();
       return;
     }
@@ -398,6 +408,26 @@
     setMetaValue(
       nodes.redirectsEnabled,
       settings.redirectsEnabled ? "On" : "Off"
+    );
+    setMetaValue(
+      nodes.pageEntryEnabled,
+      settings.pageEntryEnabled ? "On" : "Off"
+    );
+    setMetaValue(
+      nodes.pageEntryDirections,
+      formatPageEntryMode(settings.pageEntry_mode_directions)
+    );
+    setMetaValue(
+      nodes.pageEntryPlace,
+      formatPageEntryMode(settings.pageEntry_mode_place)
+    );
+    setMetaValue(
+      nodes.pageEntrySearch,
+      formatPageEntryMode(settings.pageEntry_mode_search)
+    );
+    setMetaValue(
+      nodes.pageEntryOther,
+      formatPageEntryMode(settings.pageEntry_mode_other)
     );
 
     if (!state.environment || !state.environment.isPrivateContextHint) {
@@ -612,6 +642,19 @@
     }
     if (value === "apple") {
       return "Apple Maps";
+    }
+    return "Unknown";
+  }
+
+  function formatPageEntryMode(value) {
+    if (value === "auto") {
+      return "Auto-open";
+    }
+    if (value === "prompt") {
+      return "Ask every time";
+    }
+    if (value === "off") {
+      return "Off";
     }
     return "Unknown";
   }

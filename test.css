@@ -70,6 +70,26 @@
   padding: var(--mlr-space-4);
 }
 
+.mlr-status-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mlr-space-3);
+  border-radius: var(--mlr-radius-md);
+  padding: var(--mlr-space-4);
+  border: 1px solid rgba(221, 186, 125, 0.6);
+  background: rgba(255, 251, 237, 0.95);
+}
+
+.mlr-status-panel-title {
+  font-weight: 700;
+}
+
+.mlr-status-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--mlr-space-3);
+}
+
 .mlr-region-card {
   display: flex;
   flex-direction: column;
